@@ -130,24 +130,34 @@ section{scroll-margin-top:72px}
 .gw .lead{display:grid;align-content:start;gap:0}
 .gw .lead p.sub{margin-bottom:26px;font-size:17px}
 .doors{display:grid;gap:12px;align-content:start}
+.gw-map{grid-column:1/-1;display:block;text-decoration:none;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg);transition:border-color .15s}
+.gw-map:hover{border-color:var(--ink)}
+.gw-map picture,.gw-map img{display:block;width:100%;height:auto}
+.gw-map img{aspect-ratio:1600/882;object-fit:cover;border-bottom:1px solid var(--line)}
+.gw-map .cap{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 22px}
+.gw-map .cap b{display:block;color:var(--ink);font-size:17px;margin-bottom:2px}
+.gw-map .cap span{color:var(--muted);font-size:15px}
+.gw-map .go{flex:none;color:var(--ink) !important;font-weight:600;font-size:15px;white-space:nowrap}
+.gw-map:hover .go{text-decoration:underline}
 .door{display:block;text-decoration:none;border:1px solid var(--line);border-radius:16px;padding:18px 20px;background:var(--bg);transition:border-color .15s,transform .15s}
 .door:hover{border-color:var(--ink);transform:translateY(-1px)}
 .door b{display:flex;justify-content:space-between;align-items:center;color:var(--ink);font-size:17px}
 .door b::after{content:"›";font-size:22px;color:var(--gold);line-height:1}
 .door span{display:block;color:var(--muted);font-size:15px;margin-top:4px}
-@media (max-width:820px){.gw{grid-template-columns:1fr;padding:28px 22px;gap:28px;border-radius:22px}}
+@media (max-width:820px){.gw{grid-template-columns:1fr;padding:28px 22px;gap:28px;border-radius:22px}.gw-map img{aspect-ratio:780/1245}.gw-map .cap{flex-direction:column;align-items:flex-start;gap:10px;padding:16px 18px}}
 
 /* Developments */
 .devs{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
 .dev{display:grid;gap:10px;align-content:start;text-decoration:none;background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:border-color .15s,transform .15s}
 .dev:hover{border-color:var(--ink);transform:translateY(-1px)}
+.devs-more{margin-top:18px}.devs-more[hidden]{display:none}
+.dev-all{margin-top:24px}
+.dev-toggle{font:inherit;font-size:15px;font-weight:600;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:980px;padding:10px 20px;cursor:pointer}
+.dev-toggle:hover{border-color:var(--ink)}
 .dev .tag{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .dev h3{font-size:24px;font-weight:700}
 .dev p{color:var(--body);font-size:15px}
 .dev .go{margin-top:6px;font-weight:600;color:var(--ink);font-size:15px}
-.dev-all{margin-top:24px;font-size:15px}
-.dev-all a{font-weight:600;color:var(--ink);text-decoration:none}
-.dev-all a:hover{text-decoration:underline}
 
 /* About */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
@@ -228,10 +238,16 @@ section{scroll-margin-top:72px}
         </div>
         <div class="doors">
           <a class="door" href="https://tools.kentanthepropertyguy.com/research/" data-track="groundwork" data-placement="research"><b>Research a development</b><span>See what a condo actually sells for, then compare it with another.</span></a>
-          <a class="door" href="https://tools.kentanthepropertyguy.com/research/map/" data-track="groundwork" data-placement="map"><b>Map</b><span>See what is around a home and what nearby homes sold for.</span></a>
           <a class="door" href="https://tools.kentanthepropertyguy.com/journey/" data-track="groundwork" data-placement="journey"><b>Guided property journey</b><span>Buying, moving, or wondering what your home is worth.</span></a>
           <a class="door" href="https://tools.kentanthepropertyguy.com/tools/" data-track="groundwork" data-placement="tools"><b>Tools &amp; calculators</b><span>Upgrading from your HDB, and what a budget can buy.</span></a>
         </div>
+        <a class="gw-map" href="https://tools.kentanthepropertyguy.com/research/map/" data-track="groundwork" data-placement="map-preview">
+          <picture>
+            <source media="(max-width:820px)" srcset="/assets/groundwork-map-m.webp" width="780" height="1245">
+            <img src="/assets/groundwork-map-d.webp" width="1600" height="882" loading="lazy" decoding="async" alt="Groundwork's Map showing Sky Habitat in Bishan, with the MRT station, schools, shops and parks around it listed by distance.">
+          </picture>
+          <span class="cap"><span><b>The Groundwork Map</b>Search a place, road or development and see what is around it. A real view of the Map, shown here for Sky Habitat.</span><span class="go">Explore the Map ›</span></span>
+        </a>
       </div>
     </div>
   </section>
@@ -240,7 +256,7 @@ section{scroll-margin-top:72px}
   <section id="developments" class="band" aria-labelledby="dev-title">
     <div class="wrap">
       <div class="head">
-        <p class="kicker">Development guides</p>
+        <p class="kicker">Featured developments</p>
         <h2 id="dev-title">Projects I've looked at closely.</h2>
         <p class="sub">Dedicated pages for selected developments, with the details buyers ask about most.</p>
       </div>
@@ -252,7 +268,6 @@ section{scroll-margin-top:72px}
         <a class="dev" href="https://hougangcentral.kentanthepropertyguy.com/" data-track="development" data-project="hougang-central"><span class="tag">Upcoming · Hougang</span><h3>Hougang Central</h3><p>Confirmed facts, early price estimates and nearby condo prices, before launch.</p><span class="go">View Hougang Central ›</span></a>
         <a class="dev" href="https://lucernegrand.kentanthepropertyguy.com/" data-track="development" data-project="lucerne-grand"><span class="tag">Selling · Lakeside</span><h3>Lucerne Grand</h3><p>Price list, available units, floor plans and an affordability calculator.</p><span class="go">View Lucerne Grand ›</span></a>
       </div>
-      <p class="dev-all"><a href="/developments/" data-track="development" data-project="all">View all development guides ›</a></p>
     </div>
   </section>
 
@@ -363,13 +378,36 @@ section{scroll-margin-top:72px}
      registry cannot be loaded. -->
 <script src="/assets/ktpg-registry.js" defer></script>
 <script>
+/* Featured developments: read from /developments.json (the registry). Add, update or remove a project there and this
+   section follows. The homepage shows the first six featured projects in rank order; any others are behind one button,
+   so the page stays short as the list grows. The cards in the HTML are only what visitors see if the registry cannot
+   be loaded. */
 document.addEventListener("DOMContentLoaded", function () {
   var box = document.querySelector("#developments .devs");
   if (!box || !window.KTPGRegistry) return;
   KTPGRegistry.load().then(function (r) {
     if (r.source !== "registry" || !r.featured.length) return;   // keep the built-in cards
-    box.innerHTML = KTPGRegistry.homeCardsHTML(r.featured.slice(0, 3));
+    var shown = r.featured.slice(0, 6);
+    var rest = r.projects.filter(function (p) { return shown.indexOf(p) < 0; })
+      .sort(function (a, b) { return (a.sales === "fully-sold") - (b.sales === "fully-sold"); });
+    box.innerHTML = KTPGRegistry.homeCardsHTML(shown);
     box.setAttribute("data-source", "registry");
+    if (!rest.length) return;
+    var more = document.createElement("div");
+    more.className = "devs devs-more"; more.id = "dev-more"; more.hidden = true;
+    more.innerHTML = KTPGRegistry.homeCardsHTML(rest);
+    var p = document.createElement("p");
+    p.className = "dev-all";
+    p.innerHTML = '<button type="button" class="dev-toggle" aria-expanded="false" aria-controls="dev-more">Show all developments (' + r.projects.length + ')</button>';
+    var btn = p.firstChild;
+    btn.addEventListener("click", function () {
+      var open = more.hidden;
+      more.hidden = !open;
+      btn.setAttribute("aria-expanded", String(open));
+      btn.textContent = open ? "Show fewer developments" : "Show all developments (" + r.projects.length + ")";
+    });
+    box.parentNode.insertBefore(more, box.nextSibling);
+    box.parentNode.insertBefore(p, more.nextSibling);
   });
 });
 </script>
